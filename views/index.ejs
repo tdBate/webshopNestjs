@@ -1,15 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <%= title %>
+        Webshop rendelés
     </title>
     <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
-    <h1><%= title %></h1>
-    Hello EJS!
+    <h1>
+        Webshop rendelés
+    </h1>
+
+    <% if (locals.success) { %>
+        <p class="success">
+            <%= locals.success %>
+        </p>
+        <% } %>
+
+            <form method="post">
+                <label for="product">Termék</label><br>
+                <select name="product" id="product">
+                    <option value="Laptop" <%=locals.values.product==='Laptop' ? 'selected' : '' %>>Laptop</option>
+                    <option value="Telefon" <%=locals.values.product==='Telefon' ? 'selected' : '' %>>Telefon</option>
+                    <option value="Tablet" <%=locals.values.product==='Tablet' ? 'selected' : '' %>>Tablet</option>
+                </select><br>
+
+                <label for="customerName">Név</label><br>
+                <input type="text" name="customerName" id="customerName"
+                    value="<%= locals.values.customerName || '' %>"><br>
+
+                <h2>Számlázási cím</h2>
+                <label for="billingCity">Város</label><br>
+                <input type="text" name="billingCity" id="billingCity"
+                    value="<%= locals.values.billingCity || '' %>"><br>
+                <label for="billingZip">Irányítószám</label><br>
+                <input type="text" name="billingZip" id="billingZip" value="<%= locals.values.billingZip || '' %>"><br>
+                <label for="billingStreet">Utca és házszám</label><br>
+                <input type="text" name="billingStreet" id="billingStreet"
+                    value="<%= locals.values.billingStreet || '' %>"><br>
+
+                <h2>Szállítási cím</h2>
+                <label for="shippingCity">Város</label><br>
+                <input type="text" name="shippingCity" id="shippingCity"
+                    value="<%= locals.values.shippingCity || '' %>"><br>
+                <label for="shippingZip">Irányítószám</label><br>
+                <input type="text" name="shippingZip" id="shippingZip"
+                    value="<%= locals.values.shippingZip || '' %>"><br>
+                <label for="shippingStreet">Utca és házszám</label><br>
+                <input type="text" name="shippingStreet" id="shippingStreet"
+                    value="<%= locals.values.shippingStreet || '' %>"><br>
+
+                <label for="phone">Telefonszám</label><br>
+                <input type="text" name="phone" id="phone" placeholder="+36201234567"
+                    value="<%= locals.values.phone || '' %>"><br>
+
+                <label for="coupon">Kuponkód (nem kötelező)</label><br>
+                <input type="text" name="coupon" id="coupon" placeholder="PT-1255"
+                    value="<%= locals.values.coupon || '' %>"><br>
+
+                <h2>Fizetés bankkártyával</h2>
+                <label for="cardNumber">Kártyaszám</label><br>
+                <input type="text" name="cardNumber" id="cardNumber" placeholder="1234 5678 9012 3456"><br>
+                <label for="cardName">Kártyán szereplő név</label><br>
+                <input type="text" name="cardName" id="cardName"><br>
+                <label for="cardExpiry">Lejárati dátum</label><br>
+                <input type="text" name="cardExpiry" id="cardExpiry" placeholder="12/28"><br>
+                <label for="cardCvc">CVC</label><br>
+                <input type="text" name="cardCvc" id="cardCvc" placeholder="123"><br>
+
+                <button type="submit">Megrendelés</button>
+                <% if (locals.error) { %>
+                    <p class="error">
+                        <%= locals.error %>
+                    </p>
+                    <% } %>
+            </form>
+
 </body>
+
 </html>

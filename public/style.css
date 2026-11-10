@@ -1,5 +1,24 @@
 body {
     background-color: rgb(232, 219, 202);
-    color:rgb(58, 46, 135);
+    color: rgb(58, 46, 135);
 }
 
+form {
+    max-width: 400px;
+}
+
+input,
+select {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.success {
+    color: green;
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
